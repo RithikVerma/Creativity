@@ -22,7 +22,7 @@ export default function GlassTabBar() {
   const id = useId();
   const [index, setIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  const [dark, setDark] = useState(() => window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const [dark, setDark] = useState(false);
   const [pressed, setPressed] = useState(null);
   const tabButtons = useRef([]);
   const firstAction = useRef(null);

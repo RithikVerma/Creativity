@@ -11,7 +11,7 @@ export const studies = [
   {
     title: "Precision Dial",
     slug: "precision-dial",
-    date: "2026-11-18",
+    date: "2026-02-05",
     group: "Inputs",
     color: "butter",
     desc: "An analog control for fine adjustments.",
@@ -23,7 +23,7 @@ export const studies = [
   {
     title: "Magnetic Dock",
     slug: "magnetic-dock",
-    date: "2026-11-18",
+    date: "2026-06-11",
     group: "Navigation",
     color: "sage",
     desc: "A floating toolbar that follows your focus.",
@@ -35,7 +35,7 @@ export const studies = [
   {
     title: "Stacked Toasts",
     slug: "stacked-toasts",
-    date: "2026-11-18",
+    date: "2026-08-25",
     group: "Feedback",
     color: "lilac",
     desc: "Layered notifications with a soft landing.",
@@ -47,7 +47,7 @@ export const studies = [
   {
     title: "Elastic Slider",
     slug: "elastic-slider",
-    date: "2026-11-18",
+    date: "2025-01-21",
     group: "Inputs",
     color: "sky",
     desc: "A volume slider with a responsive waveform.",
@@ -59,7 +59,7 @@ export const studies = [
   {
     title: "Hold to Confirm",
     slug: "hold-to-confirm",
-    date: "2026-11-18",
+    date: "2025-04-17",
     group: "Feedback",
     color: "rose",
     desc: "A deliberate press for important actions.",
@@ -71,7 +71,7 @@ export const studies = [
   {
     title: "Segmented Control",
     slug: "segmented-control",
-    date: "2026-11-18",
+    date: "2025-09-13",
     group: "Navigation",
     color: "sand",
     desc: "A sliding selector for switching views.",

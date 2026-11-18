@@ -1,0 +1,13 @@
+name: Rebuild portfolio
+on:
+  push:
+    branches: [main]
+permissions: {}
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger portfolio deployment
+        env:
+          DEPLOY_HOOK: ${{ secrets.PORTFOLIO_DEPLOY_HOOK }}
+        run: curl --fail --silent --show-error --output /dev/null --request POST "$DEPLOY_HOOK"

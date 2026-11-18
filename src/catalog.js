@@ -1,3 +1,4 @@
+import GlassTabBar from './GlassTabBar';
 import GitProviders from './GitProviders';
 import {
   PrecisionDial,
@@ -9,6 +10,17 @@ import {
 } from "./Studies";
 
 export const studies = [
+  {
+    title: "Expandable Glass Tab Bar",
+    slug: "expandable-glass-tab-bar",
+    date: "2026-11-19",
+    group: "Navigation",
+    color: "sage",
+    desc: "A glass tab bar that expands into a grid of quick actions.",
+    hint: "Expand the tab bar",
+    Component: GlassTabBar,
+    notes: "Switch tabs, then tap + to reveal eleven quick actions. Inspired by Jorge Castillo's expandable tab bar.",
+  },
   {
     title: "Git Provider Integration",
     slug: "git-provider-integration",
@@ -93,4 +105,3 @@ export const studies = [
       "Choose a view to move the selection indicator. Each choice exposes its pressed state to assistive technology and can be activated from the keyboard.",
   },
 ];
-

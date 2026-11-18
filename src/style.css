@@ -24,10 +24,8 @@ header > span, footer { color: #74746d; }
 .filters button { padding: 0; font-size: 12px; color: #898981; }
 .filters button[aria-pressed="true"] { color: #161616; text-decoration: underline; text-underline-offset: 5px; }
 
-.grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid #d8d8d2; }
+.grid { border-top: 1px solid #d8d8d2; }
 article { min-width: 0; padding: 28px 0 34px; border-bottom: 1px solid #d8d8d2; }
-article:nth-child(odd) { padding-right: 28px; border-right: 1px solid #d8d8d2; }
-article:nth-child(even) { padding-left: 28px; }
 .preview { position: relative; display: grid; place-items: center; height: clamp(280px, 34vw, 410px); background: #ecece7; overflow: hidden; }
 .index { position: absolute; top: 18px; left: 18px; font: 400 10px "DM Mono", monospace; color: #777770; }
 .study-link { display: flex; justify-content: space-between; align-items: flex-start; width: 100%; padding: 18px 0 0; text-align: left; }
@@ -55,8 +53,7 @@ footer { height: 100px; border-top: 1px solid #1b1b1b; font: 400 11px "DM Mono",
   .intro h1 { font-size: clamp(50px, 15vw, 76px); }
   .collection-head { display: block; }
   .filters { margin-top: 18px; gap: 16px; overflow-x: auto; }
-  .grid { grid-template-columns: 1fr; }
-  article:nth-child(odd), article:nth-child(even) { padding: 20px 0 28px; border-right: 0; }
+  article { padding: 20px 0 28px; }
   .preview { height: 310px; }
   .dialog-preview { min-height: 330px; }
   footer { height: 80px; }

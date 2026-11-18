@@ -1,0 +1,155 @@
+﻿.glass-study {
+  --glass-ink: #101111;
+  --glass-screen: #f2f3f0;
+  --glass-surface: rgb(255 255 255 / 64%);
+  --glass-tile: rgb(24 26 23 / 6%);
+  --glass-edge: rgb(255 255 255 / 82%);
+  width: min(100%, calc(71.9mm + 32px));
+  container-type: inline-size;
+  box-sizing: border-box;
+  padding: 16px;
+  color: var(--glass-ink);
+  font: 500 14px/1.25 Inter, system-ui, sans-serif;
+}
+.glass-study[data-dark="true"] {
+  --glass-ink: #f6f7f6;
+  --glass-screen: #101112;
+  --glass-surface: rgb(39 40 42 / 70%);
+  --glass-tile: rgb(255 255 255 / 7%);
+  --glass-edge: rgb(255 255 255 / 16%);
+}
+.preview:has(> .glass-study), .dialog-preview:has(> .glass-study), .craft-detail-stage:has(> .glass-study) {
+  height: auto;
+  padding-block: 16px;
+}
+.glass-phone {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 71.9 / 150;
+  /* A shallow side view exposes a sliver of the 8.75 mm chassis. */
+  --edge: calc(100cqi * 8.75 / 71.9 * sin(8deg));
+  border: 5px solid #121314;
+  border-radius: 14cqi;
+  background: var(--glass-screen);
+  box-shadow: inset 0 0 0 1px #525252, 0 0 0 1px #888, var(--edge) 0 #383839, 0 10px 24px #0002;
+}
+.glass-status {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 6cqi;
+  font-size: 10px;
+  font-weight: 650;
+  pointer-events: none;
+}
+.glass-indicators { display: flex; align-items: center; gap: 2px; }
+.glass-island {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  translate: -50%;
+  width: 24cqi;
+  height: 19px;
+  border-radius: 99px;
+  background: #090909;
+}
+.glass-island::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #465057, #14171a 60%);
+}
+.glass-side-keys, .glass-side-keys::before, .glass-side-keys::after {
+  position: absolute;
+  width: 3px;
+  border-radius: 2px;
+  background: #414141;
+  pointer-events: none;
+}
+.glass-side-keys { left: -8px; top: 21%; height: 5cqi; }
+.glass-side-keys::before { content: ""; top: 9cqi; height: 10cqi; box-shadow: 0 12cqi #414141; }
+.glass-side-keys::after { content: ""; left: calc(100cqi + var(--edge) + 2px); top: 12cqi; height: 16cqi; }
+.glass-phone::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 34%;
+  width: 32%;
+  height: 3px;
+  border-radius: 99px;
+  background: var(--glass-ink);
+  pointer-events: none;
+}
+.glass-study button {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.glass-study button:focus-visible { outline: 2px solid currentColor; outline-offset: -3px; }
+.glass-page { padding: 16px 42px 0; text-align: center; font-size: 16px; }
+.glass-study .glass-theme { position: absolute; top: 42px; right: 9px; width: 32px; height: 32px; border-radius: 50%; }
+.glass-dock {
+  position: absolute;
+  inset-inline: 10px;
+  bottom: 19px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 43px;
+  align-items: end;
+  gap: 5px;
+}
+.glass-surface, .glass-study .glass-toggle {
+  box-sizing: border-box;
+  border: 1px solid var(--glass-edge);
+  background: var(--glass-surface);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: inset 0 1px 2px var(--glass-edge), 0 3px 12px #0000000b;
+}
+.glass-surface { position: relative; overflow: hidden; height: 44px; border-radius: 24px; }
+.glass-dock[data-expanded="true"] .glass-surface { height: 192px; border-radius: 21px; }
+.glass-tabs, .glass-actions { position: absolute; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); }
+.glass-tabs { bottom: 2px; inset-inline: 2px; height: 38px; }
+.glass-tabs::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 25%;
+  border-radius: 21px;
+  background: var(--glass-tile);
+  box-shadow: inset 0 1px 2px var(--glass-edge);
+  transform: translateX(calc(var(--glass-index) * 100%));
+}
+.glass-tabs button { position: relative; border-radius: 22px; }
+.glass-actions {
+  inset: auto 6px 8px;
+  height: 174px;
+  grid-template-rows: repeat(3,minmax(0,1fr));
+  gap: 3px;
+}
+.glass-actions button { grid-template-rows: 1fr auto; gap: 3px; border-radius: 10px; font-size: 10px; }
+.glass-tile { display: grid; place-items: center; align-self: stretch; justify-self: stretch; border-radius: 12px; background: var(--glass-tile); }
+.glass-actions button[data-pressed="true"] .glass-tile { color: var(--glass-screen); background: var(--glass-ink); transform: scale(.94); }
+.glass-tabs[inert], .glass-actions[inert] { opacity: 0; pointer-events: none; filter: blur(5px); transform: scale(.88); }
+.glass-study .glass-toggle { width: 43px; height: 43px; border-radius: 50%; }
+.glass-dock[data-expanded="true"] .glass-toggle svg { transform: rotate(45deg); }
+.glass-announcement { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (prefers-reduced-motion: no-preference) {
+  .glass-surface { transition: height .38s cubic-bezier(.22,.85,.22,1), border-radius .38s; }
+  .glass-tabs, .glass-actions { transition: opacity .18s ease, filter .24s ease, transform .3s ease; transform-origin: bottom center; }
+  .glass-dock[data-expanded="true"] .glass-actions { transition-delay: .07s; }
+  .glass-toggle svg, .glass-tabs::before { transition: transform .32s cubic-bezier(.22,.85,.22,1); }
+  .glass-tile { transition: transform .14s ease, background .14s ease; }
+}

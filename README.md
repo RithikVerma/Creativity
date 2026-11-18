@@ -1,39 +1,62 @@
-﻿# Craft Lab
+# Craft Lab
 
-Six interactive studies built with React, CSS, and Tailwind CSS.
+## Use a component
 
-## Run the collection
+In an existing React app with JSX, CSS, and SVG import support, install the icon dependency used by this collection:
 
 ```sh
-npm install
-npm run dev
+npm install lucide-react@^0.468.0
 ```
 
-Use `npm run build` to create the static site in `dist`.
+Copy the files for your component from this repository into `src/components/craft/` in your app. Keep their relative paths so the stylesheet and asset imports resolve.
 
-## Use a component in your portfolio
+| Component | Files to copy |
+| --- | --- |
+| Expandable Glass Tab Bar | [GlassTabBar.jsx](src/GlassTabBar.jsx) and [glass-tab-bar.css](src/glass-tab-bar.css) |
+| Git Provider Integration | [GitProviders.jsx](src/GitProviders.jsx), [git-providers.css](src/git-providers.css), and the [providers/](src/providers/) folder |
+| Precision Dial, Magnetic Dock, Stacked Toasts, Elastic Slider, Hold to Confirm, Segmented Control | [Studies.jsx](src/Studies.jsx) and [studies.css](src/studies.css) |
 
-Copy `src/Studies.jsx` and `src/studies.css` into the same folder in your React project. The components import their stylesheet and use icons from `lucide-react`. The demo uses Tailwind’s base reset.
+### Render the glass tab bar
+
+From `src/App.jsx`, import the default export. The component loads its own CSS.
 
 ```jsx
-import { PrecisionDial } from "./Studies";
+import GlassTabBar from "./components/craft/GlassTabBar";
 
-export default function InteractionStudy() {
+export default function App() {
+  return <GlassTabBar />;
+}
+```
+
+### Connect a control to your app
+
+The controls in `Studies.jsx` are named exports. This example uses the dial's `onChange` callback to update a brightness filter.
+
+```jsx
+import { useState } from "react";
+import { PrecisionDial } from "./components/craft/Studies";
+
+export default function BrightnessControl() {
+  const [brightness, setBrightness] = useState(80);
+
   return (
-    <PrecisionDial initialValue={64} onChange={(value) => console.log(value)} />
+    <section>
+      <p style={{ filter: `brightness(${brightness}%)`, background: "#e6c463", padding: 16 }}>
+        Brightness preview
+      </p>
+      <PrecisionDial initialValue={80} onChange={setBrightness} />
+    </section>
   );
 }
 ```
 
-| Component        | Interaction                                        | Props                             |
-| ---------------- | -------------------------------------------------- | --------------------------------- |
-| PrecisionDial    | Drag vertically or horizontally, or use arrow keys | `initialValue`, `onChange(value)` |
-| MagneticDock     | Magnify adjacent icons and select a tool           | `onSelect(name)`                  |
-| StackedToasts    | Add and dismiss demo notifications                 | Self-contained demo               |
-| ElasticSlider    | Adjust a value with a waveform readout             | `initialValue`, `onChange(value)` |
-| HoldToConfirm    | Hold for 850 ms with a pointer, Space, or Enter    | `onConfirm()`                     |
-| SegmentedControl | Switch between three view modes                    | `onChange(name)`                  |
+## Run the demo gallery
 
-## Design references
+From the root of a local clone:
 
-The drag control retains pointer capture as described in [Rauno Freiberg’s interaction study](https://rauno.me/craft/interaction-design). The toast stack uses interruptible CSS transitions inspired by [Emil Kowalski’s Sonner write-up](https://emilkowal.ski/ui/building-a-toast-component). The visual treatments and implementations were created for this collection.
+```sh
+npm ci
+npm run dev
+```
+
+Open the local URL printed by Vite. Run `npm run build` to generate `dist/`, then `npm run preview` to serve that build locally.

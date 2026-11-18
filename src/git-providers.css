@@ -1,0 +1,21 @@
+.git-providers { width: min(94%, 760px); container-type: inline-size; color: #131a13; font: 500 14px/1.25 system-ui, sans-serif; }
+.gp-row { display: flex; gap: 1.9cqw; height: clamp(160px, 36cqw, 270px); }
+.gp-card { position: relative; overflow: hidden; flex: 1 1 0; min-width: 0; border-radius: clamp(12px, 3cqw, 24px); background: var(--gp-fill); transition: flex-grow .42s cubic-bezier(.22,.8,.2,1); }
+.gp-card[data-brand=GitHub] { --gp-fill: linear-gradient(#49af47,#50cc41); }
+.gp-card[data-brand=GitLab] { --gp-fill: linear-gradient(#ffab85,#ffca85); }
+.gp-card[data-brand=Bitbucket] { --gp-fill: linear-gradient(#d4eda4,#e5f1c8); }
+.gp-card[data-open=true] { flex-grow: 6; }
+.gp-watermark { position: absolute; height: 126%; width: auto; max-width: none; top: -12%; right: -28%; opacity: 0; transition: opacity .25s; pointer-events: none; }
+[data-open=true] > .gp-watermark { opacity: .14; }
+.git-providers button { border: 0; cursor: pointer; color: #101810; font: inherit; }
+.gp-selector { position: absolute; inset: 0; width: 100%; background: transparent; padding: 0; }
+.gp-selector img { position: absolute; width: clamp(17px,4cqw,32px); bottom: 3.4cqw; left: 50%; transform: translateX(-50%); }
+[data-open=true] .gp-selector img { left: 5.5cqw; }
+[data-brand=GitLab] .gp-selector img { filter: invert(39%) sepia(95%) saturate(2500%) hue-rotate(351deg); }
+.gp-info { position: absolute; bottom: 3.2cqw; left: 9.8cqw; display: grid; gap: 3px; pointer-events: none; font-size: clamp(11px,1.65cqw,14px); white-space: nowrap; }
+.gp-info span { opacity: .76; }
+.gp-action { position: absolute; bottom: 3cqw; right: 3cqw; display: flex; align-items: center; gap: 5px; padding: 9px 12px; background: #fff; border-radius: 99px; }
+.git-providers button:focus-visible { outline: 2px solid #19331a; outline-offset: -4px; }
+.gp-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@container (max-width: 490px) { .gp-action { bottom: 14cqw; font-size: 12px !important; } }
+@media (prefers-reduced-motion: reduce) { .gp-card, .gp-watermark { transition: none; } }

@@ -1,3 +1,4 @@
+import GitProviders from './GitProviders';
 import {
   PrecisionDial,
   MagneticDock,
@@ -8,6 +9,17 @@ import {
 } from "./Studies";
 
 export const studies = [
+  {
+    title: "Git Provider Integration",
+    slug: "git-provider-integration",
+    date: "2026-11-18",
+    group: "Inputs",
+    color: "sage",
+    desc: "Connect one Git provider to a workspace.",
+    hint: "Select a provider",
+    Component: GitProviders,
+    notes: "Explore the providers and switch the active connection. This interactive demo is inspired by Vasile (@justvasi).",
+  },
   {
     title: "Precision Dial",
     slug: "precision-dial",
@@ -81,3 +93,4 @@ export const studies = [
       "Choose a view to move the selection indicator. Each choice exposes its pressed state to assistive technology and can be activated from the keyboard.",
   },
 ];
+
